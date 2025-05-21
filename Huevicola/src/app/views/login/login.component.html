@@ -1,0 +1,45 @@
+<main>
+  <section>
+    <div class="corner top-left"></div>
+    <div class="corner bottom-right"></div>
+    <div class="card-container">
+
+      <div class="img_container">
+        <img src="egg_icon.svg" alt="Icono SVG" />
+      </div>
+
+      <div class="card-right">
+        <div class="card-header">
+          <h5>INICIO DE SESIÓN</h5>
+        </div>
+        <div class="form-content">
+          <form [formGroup]="loginForm" (ngSubmit)="onLogin()" role="form text-left">
+            <div class="form-group">
+              <label for="email">Correo electrónico:</label>
+              <div class="input-with-icon">
+                <input formControlName="email" type="email" id="emaildni" placeholder="Ingrese correo electrónico" aria-label="email" aria-describedby="dni-addon" />
+<!--                <i class="fas fa-user icon"></i>-->
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="password">Contraseña: </label>
+              <div class="input-with-icon">
+<!--                <i class="fas fa-lock icon"></i>-->
+                <input formControlName="password" type="password" id="password" placeholder="Ingrese contraseña" aria-label="Password" aria-describedby="password-addon" />
+              </div>
+            </div>
+            <div class="text-center">
+              <button type="submit">INGRESAR</button>
+            </div>
+            <label for="dni">También puedes ingresar con:</label>
+            <div class="social-icons">
+              <img (click)="loginWithAccounts('google')" src="google.svg" alt="Icono SVG" class="img_style"/>
+              <img (click)="loginWithAccounts('github')"src="github.svg" alt="Icono SVG" class="img_style"/>
+              <img (click)="loginWithAccounts('facebook')"src="fb.svg" alt="Icono SVG" class="img_style"/>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
