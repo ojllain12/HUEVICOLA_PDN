@@ -45,7 +45,29 @@ export class LoginComponent {
   }
 
   async loginWithAccounts(type: string) {
-
+    let provider = null;
+    switch (type) {
+      case 'github':
+        provider = new GithubAuthProvider();
+        break;
+    }
+    try {
+      const result = await signInWithPopup(this.auth, provider ? provider : new GoogleAuthProvider());
+      const user = result.user;
+      const token = await user.getIdToken();
+      //console.log('Usuario:', user);
+      //console.log('Token Firebase JWT:', token);
+      this.storage.addToken(token);
+      this.router.navigate(['/main']);
+    } catch (err: any) {
+      this.validateError(err);
+    }
   }
 
+  async validateError(err: any) {
+    if (err.code !== 'auth/cancelled-popup-request') {
+      this.notification.showError(err?.message ?? 'Error al iniciar sesión');
+    }
+    console.error(err);
+  }
 }
