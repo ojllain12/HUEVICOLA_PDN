@@ -47,6 +47,9 @@ export class LoginComponent {
   async loginWithAccounts(type: string) {
     let provider = null;
     switch (type) {
+      case 'google':
+        provider = new GoogleAuthProvider();
+        break;
       case 'github':
         provider = new GithubAuthProvider();
         break;
