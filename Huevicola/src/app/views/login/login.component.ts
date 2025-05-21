@@ -53,6 +53,9 @@ export class LoginComponent {
       case 'github':
         provider = new GithubAuthProvider();
         break;
+      case 'facebook':
+        provider = new FacebookAuthProvider();
+        break;
     }
     try {
       const result = await signInWithPopup(this.auth, provider ? provider : new GoogleAuthProvider());
