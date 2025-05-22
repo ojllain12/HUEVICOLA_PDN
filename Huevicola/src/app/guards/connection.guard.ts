@@ -18,7 +18,7 @@ export class ConnectionGuard implements CanActivate {
       return true;
     } else {
       console.log('Connection failed');
-      return this.router.navigate(['/offline']);
+      return true;//this.router.navigate(['/offline']);
     }
   }
 

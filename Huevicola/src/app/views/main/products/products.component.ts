@@ -20,7 +20,7 @@ export class ProductsComponent implements OnInit {
   list_category: Category[] = [];
   product_temp: ProductMapped = {
     date: '',
-    id: -1,
+    id: undefined,
     name: '',
     price: 0,
     stock: 0,
@@ -125,7 +125,7 @@ export class ProductsComponent implements OnInit {
   async resetTemp() {
     this.product_temp = {
       date: '',
-      id: -1,
+      id: undefined,
       name: '',
       price: 0,
       stock: 0,
