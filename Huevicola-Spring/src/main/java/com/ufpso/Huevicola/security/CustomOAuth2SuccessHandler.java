@@ -24,7 +24,7 @@ public class CustomOAuth2SuccessHandler  implements AuthenticationSuccessHandler
         OAuth2User oAuth2User = (OAuth2User) authentication.getPrincipal();
         String email = oAuth2User.getAttribute("email");
         try{
-            String token = service.loginWithGoogle(email);
+            String token = service.loginWithEmail(email);
             response.sendRedirect("http://localhost:65535/login-success?token=" + token);
         }catch (Exception e){
             response.sendRedirect("http://localhost:65535/");

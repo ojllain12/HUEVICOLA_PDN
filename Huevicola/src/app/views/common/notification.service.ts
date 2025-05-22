@@ -7,6 +7,7 @@ import Swal from 'sweetalert2';
 export class NotificationService {
 
   showError(message: string) {
+    this.hideLoading();
     Swal.fire({
       title: 'Error!',
       text: message,
@@ -16,6 +17,7 @@ export class NotificationService {
   }
 
   showSuccess(message: string) {
+    this.hideLoading();
     Swal.fire({
       title: '¡Éxito!',
       text: message,
@@ -25,6 +27,7 @@ export class NotificationService {
   }
 
   showConfirmDelete(message: string, onConfirm: () => void) {
+    this.hideLoading();
     Swal.fire({
       title: '¿Estás seguro?',
       text: message,
@@ -40,6 +43,7 @@ export class NotificationService {
     });
   }
   showLoading(message: string) {
+    this.hideLoading();
     Swal.fire({
       title: message,
       text: 'Por favor, espere...',

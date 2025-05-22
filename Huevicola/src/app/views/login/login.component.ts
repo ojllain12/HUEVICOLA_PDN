@@ -4,6 +4,7 @@ import { ReactiveFormsModule, FormsModule, FormGroup, FormBuilder, Validators } 
 import { Auth, FacebookAuthProvider, fetchSignInMethodsForEmail, GithubAuthProvider, GoogleAuthProvider, signInWithEmailAndPassword, signInWithPopup } from '@angular/fire/auth';
 import { StorageService } from '../../services/storage.service.js';
 import { NotificationService } from '../common/notification.service.js';
+import { GithubAuthService } from '../../services/auth-github.service.js';
 
 @Component({
   selector: 'app-login',
@@ -21,7 +22,8 @@ export class LoginComponent {
     private router: Router,
     private auth: Auth,
     private storage: StorageService,
-    private notification: NotificationService) {
+    private notification: NotificationService,
+    private github: GithubAuthService) {
     this.storage.deleteToken();
     this.loginForm = this.formBuilder.group({
       email: ['', [Validators.required, Validators.email]],
@@ -42,6 +44,9 @@ export class LoginComponent {
     } catch (err: any) {
       this.validateError(err);
     }
+  }
+  async loginWithGithub(){
+    this.github.loginWithGithub();
   }
 
   async loginWithAccounts(type: string) {

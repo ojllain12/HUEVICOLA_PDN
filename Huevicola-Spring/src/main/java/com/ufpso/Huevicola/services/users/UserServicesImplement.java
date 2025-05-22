@@ -33,15 +33,9 @@ public class UserServicesImplement implements UserServices {
     }
 
     @Override
-    public String loginWithGoogle(String email) {
+    public String loginWithEmail(String email) {
         Optional<User> userOptional = repository.findByEmail(email);
         if (userOptional.isEmpty()) {
-            if(email.equals("leospinap@ufpso.edu.co")){
-                User user = new User();
-                user.setEmail(email);
-                repository.save(user);
-                return loginWithGoogle(email);
-            }
             throw new AuthenticationFailedException("Credenciales incorrectas");
         }
         return JWTServices.getToken(new HashMap<>(), userOptional.get());

@@ -5,5 +5,5 @@ import com.ufpso.Huevicola.models.generic.ResponseMessage;
 
 public interface UserServices {
     ResponseMessage loginUser(User user);
-    String loginWithGoogle(String email);
+    String loginWithEmail(String email);
 }

@@ -42,6 +42,7 @@ public class SecurityConfig {
                     authorize.requestMatchers("/ping").permitAll();
                     authorize.requestMatchers("/login/**").permitAll();
                     authorize.requestMatchers("api/users/**").permitAll();
+                    authorize.requestMatchers("api/github/**").permitAll();
                     authorize.requestMatchers("swagger-ui/**").permitAll();
                     authorize.requestMatchers("/v3/api-docs/**").permitAll();
                     authorize.anyRequest().authenticated();
