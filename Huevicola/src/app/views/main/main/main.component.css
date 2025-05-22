@@ -1,0 +1,11 @@
+*{
+  font-family: 'Poppins', sans-serif;
+}
+
+.main-app-content {
+    transition: margin-left 0.3s;
+    height: 90hv;
+    margin-left: 0;
+    margin-left: 17%;
+    width: 83%;
+}

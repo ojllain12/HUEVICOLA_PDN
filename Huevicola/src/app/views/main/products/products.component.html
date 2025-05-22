@@ -1,0 +1,97 @@
+<main>
+  <h1> PRODUCTOS </h1>
+
+  <div class="add">
+    <button class="btn-add" (click)="addNewRow()" title="Agregar nuevo producto">
+  <i class="fas fa-plus"></i> Agregar
+</button>
+  </div>
+  <table>
+    <thead>
+      <tr>
+        <th></th>
+        <th>Categoría</th>
+        <th>Tipo</th>
+        <th>Nombre</th>
+        <th>Precio</th>
+        <th>Stock</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let product of list_products; let i=index">
+        <!-- Action buttons -->
+        <td>
+          <div *ngIf="!product.editMode">
+            <button (click)="editField(i)" class="edit-btn" title="Editar">
+              <i class="fas fa-edit"></i>
+            </button>
+            <button (click)="deleteField(i)" class="delete-btn" title="Eliminar">
+              <i class="fas fa-trash-alt"></i>
+            </button>
+          </div>
+          <div *ngIf="product.editMode">
+            <button (click)="saveField(i)" class="save-btn" title="Guardar">
+              <i class="fas fa-save"></i>
+            </button>
+            <button (click)="cancelEdit(i)" class="cancel-btn" title="Cancelar">
+              <i class="fas fa-times"></i>
+            </button>
+          </div>
+        </td>
+        <!-- Category -->
+        <td>
+          <div *ngIf="!product.editMode" [attr.id]="'v-name-' + i">
+            {{ product.type.category.name }}
+          </div>
+          <div *ngIf="product.editMode" [attr.id]="'e-name-' + i">
+            <select id="category" [(ngModel)]="product_temp.type.category.id">
+              <option *ngFor="let category of list_category" [value]="category.id">
+                {{ category.name }}
+              </option>
+            </select>
+          </div>
+        </td>
+        <!-- Type -->
+        <td>
+          <div *ngIf="!product.editMode" [attr.id]="'v-name-' + i">
+            {{ product.type.name }}
+          </div>
+          <div *ngIf="product.editMode" [attr.id]="'e-name-' + i">
+            <select id="type" [(ngModel)]="product_temp.type.id">
+              <option *ngFor="let type of list_types" [value]="type.id">
+                {{ type.name }}
+              </option>
+            </select>
+          </div>
+        </td>
+        <!-- Name -->
+        <td>
+          <div *ngIf="!product.editMode" [attr.id]="'v-name-' + i">
+            {{ product.name }}
+          </div>
+          <div *ngIf="product.editMode" [attr.id]="'e-name-' + i">
+            <input type="text" [(ngModel)]="product_temp.name">
+          </div>
+        </td>
+        <!-- Price -->
+        <td>
+          <div *ngIf="!product.editMode" [attr.id]="'v-name-' + i">
+            {{ product.price }}
+          </div>
+          <div *ngIf="product.editMode" [attr.id]="'e-name-' + i">
+            <input type="number" [(ngModel)]="product_temp.price">
+          </div>
+        </td>
+        <!-- Stock -->
+        <td>
+          <div *ngIf="!product.editMode" [attr.id]="'v-name-' + i">
+            {{ product.stock }}
+          </div>
+          <div *ngIf="product.editMode" [attr.id]="'e-name-' + i">
+            <input type="number" [(ngModel)]="product_temp.stock">
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</main>
