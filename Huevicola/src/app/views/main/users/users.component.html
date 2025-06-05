@@ -1,0 +1,37 @@
+<main>
+  <h1> USUARIOS </h1>
+  <table>
+    <thead>
+      <tr>
+        <th></th>
+        <th>Email</th>
+        <th>Name</th>
+        <th>UID</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let user of list_users; let i=index">
+        <td>
+          <button (click)="deleteUserByUID(i)" class="delete-btn" title="Eliminar">
+            <i class="fas fa-trash-alt"></i>
+          </button>
+        </td>
+        <td>
+          <div>
+            {{ user.email }}
+          </div>
+        </td>
+        <td>
+          <div>
+            {{ user.name }}
+          </div>
+        </td>
+        <td>
+          <div>
+            {{ user.uid }}
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</main>

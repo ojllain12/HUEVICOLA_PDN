@@ -5,6 +5,7 @@ import { ProductsComponent } from './views/main/products/products.component';
 import { TokenGuard } from './guards/token.guard';
 import { OfflineGuard } from './guards/offline.guard';
 import { loginGuard } from './guards/login.guard';
+import { UsersComponent } from './views/main/users/users.component';
 
 export const routes: Routes = [
   {
@@ -19,6 +20,9 @@ export const routes: Routes = [
     children:[
       {
         path: 'products', component: ProductsComponent
+      },
+      {
+        path: 'users', component: UsersComponent
       },
       {
         path:'**', redirectTo: 'products', pathMatch: 'full'

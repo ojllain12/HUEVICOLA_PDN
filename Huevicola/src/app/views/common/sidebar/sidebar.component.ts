@@ -21,6 +21,9 @@ export class SidebarComponent {
   goToProducts() {
     this.router.navigate(['/main/products']);
   }
+  goToUsers() {
+    this.router.navigate(['/main/users']);
+  }
 
   logOut() {
     this.storage.deleteToken();
